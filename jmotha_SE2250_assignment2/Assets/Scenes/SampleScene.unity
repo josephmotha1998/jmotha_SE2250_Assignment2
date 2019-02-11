@@ -1044,7 +1044,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  ScoreText: {fileID: 23002928}
+  scoretext: {fileID: 23002928}
 --- !u!1 &1919518946
 GameObject:
   m_ObjectHideFlags: 0

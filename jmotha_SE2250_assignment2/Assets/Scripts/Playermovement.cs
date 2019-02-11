@@ -6,30 +6,30 @@ using UnityEngine.UI;
 public class Playermovement : MonoBehaviour
 {
   
-    private Rigidbody rb;
-    private int score;
+    private Rigidbody _rb;
+    private int _score;
 
     public float speed;
-    public Text ScoreText;
+    public Text scoretext;
 
 
     public int Score
     {
         get
         {
-            return score;
+            return _score;
         }
 
         set
         {
-            score = score +value;
+            _score = _score +value;
         }
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        _rb = GetComponent<Rigidbody>();
         Score = 0;
         SetScoreText();
 
@@ -46,7 +46,7 @@ public class Playermovement : MonoBehaviour
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
         Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
-        rb.AddForce(movement*speed);
+        _rb.AddForce(movement*speed);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -63,7 +63,6 @@ public class Playermovement : MonoBehaviour
             other.gameObject.SetActive(false);
             Score =  2;
             SetScoreText();
-            ;
         }
         else if (other.gameObject.CompareTag("Item") && other.gameObject.GetComponent<Renderer>().material.color == Color.magenta)
         {
@@ -76,7 +75,7 @@ public class Playermovement : MonoBehaviour
 
     void SetScoreText()
     {
-        ScoreText.text = "Score: " + Score.ToString();
+        scoretext.text = "Score: " + Score.ToString();
     }
 
 }
